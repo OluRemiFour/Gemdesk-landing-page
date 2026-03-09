@@ -106,7 +106,9 @@ export default function LandingPage() {
           </div>
            <div className="flex items-center gap-6">
             <a href="#how-it-works" className="text-sm text-foreground/70 hover:text-white transition-colors">How it Works</a>
+            <a href="#documentation" className="text-sm text-foreground/70 hover:text-white transition-colors">Documentation</a>
             <a href="#security" className="text-sm text-foreground/70 hover:text-white transition-colors">Security</a>
+            <a href="#report-issue" className="text-sm text-foreground/70 hover:text-white transition-colors text-red-400">Report Issue</a>
             <button 
               onClick={handleDownload}
               className="btn-primary py-2 text-sm disabled:opacity-50 relative overflow-hidden"
@@ -288,6 +290,69 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Documentation UI Section */}
+      <section id="documentation" className="py-24 px-6 bg-card/10 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="flex-1">
+              <h2 className="text-4xl font-bold text-white mb-6">Documentation</h2>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
+                    <Shield className="w-5 h-5" /> Remote Control & Permissions
+                  </h4>
+                  <p className="text-foreground/60 leading-relaxed">
+                    GemDesk provides a secure WebRTC-based direct connection between machines. The host maintains full control: approving initial connection requests and toggling between <span className="text-white font-medium">Read-Only</span> and <span className="text-white font-medium">Write</span> permissions at any time during the session.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
+                    <Monitor className="w-5 h-5" /> Visual Clarity
+                  </h4>
+                  <p className="text-foreground/60 leading-relaxed">
+                    Desktop sharing is optimized for developers. We use low-latency video codecs to ensure that terminal outputs, code editors, and complex UIs are transmitted with high fidelity, maintaining crisp text even on low-bandwidth connections.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-semibold text-primary mb-2 flex items-center gap-2">
+                    <Users className="w-5 h-5" /> Live Voice Conversation
+                  </h4>
+                  <p className="text-foreground/60 leading-relaxed">
+                    Collaboration is more than just looking at a screen. GemDesk includes an integrated live microphone feature, allowing participants to discuss changes and brainstorm solutions in real-time without needing a secondary communication app.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 relative">
+              <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full" />
+              <div className="sharp-card p-1 bg-[#0A0A0A] border-primary/20 relative z-10">
+                <div className="bg-[#111] p-6 rounded-[2px] min-h-[300px] flex flex-col justify-center">
+                   <div className="flex items-center gap-4 mb-8">
+                     <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+                       <Monitor className="w-6 h-6 text-primary" />
+                     </div>
+                     <div>
+                       <div className="h-2 w-32 bg-white/10 rounded mb-2" />
+                       <div className="h-2 w-20 bg-white/5 rounded" />
+                     </div>
+                   </div>
+                   <div className="space-y-3">
+                     <div className="h-1 w-full bg-white/5 rounded" />
+                     <div className="h-1 w-full bg-white/5 rounded" />
+                     <div className="h-1 w-2/3 bg-white/5 rounded" />
+                     <div className="h-1 w-full bg-white/5 rounded" />
+                   </div>
+                   <div className="mt-8 flex justify-end gap-2">
+                     <div className="h-8 w-24 bg-primary/20 rounded px-3 py-1 text-[10px] text-primary flex items-center justify-center font-bold">WRITABLE</div>
+                     <div className="h-8 w-24 border border-white/10 rounded" />
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Use Cases */}
       <section className="py-24 px-6">
         <div className="max-w-7xl mx-auto">
@@ -363,6 +428,48 @@ export default function LandingPage() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Report Issue Section */}
+      <section id="report-issue" className="py-24 px-6 border-t border-card-border/30 bg-primary/[0.02]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/10 mb-6">
+              <Bug className="w-8 h-8 text-red-500" />
+            </div>
+            <h2 className="text-3xl font-bold text-white mb-4">Report an Issue</h2>
+            <p className="text-foreground/60">Help us make GemDesk better. Encountered a bug or have a suggestion?</p>
+          </div>
+          
+          <div className="sharp-card p-8 bg-[#0F0F0F] border-white/5">
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Your Name</label>
+                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="John Doe" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Email Address</label>
+                  <input type="email" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="john@example.com" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Issue Category</label>
+                <select className="w-full bg-[#1A1A1A] border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors appearance-none">
+                  <option>Bug Report</option>
+                  <option>Feature Request</option>
+                  <option>Connection Issue</option>
+                  <option>Performance Issue</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Description</label>
+                <textarea className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-6 text-white focus:border-primary outline-none transition-colors min-h-[150px]" placeholder="Please describe the issue in detail..." />
+              </div>
+              <button type="submit" className="btn-primary w-full py-4 text-base font-bold">Submit Report</button>
+            </form>
+          </div>
         </div>
       </section>
 
