@@ -443,29 +443,30 @@ export default function LandingPage() {
           </div>
           
           <div className="sharp-card p-8 bg-[#0F0F0F] border-white/5">
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" action="mailto:innovativedesign67@gmail.com" method="post" encType="text/plain">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Your Name</label>
-                  <input type="text" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="John Doe" />
+                  <input name="Name" type="text" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="John Doe" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Email Address</label>
-                  <input type="email" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="john@example.com" />
+                  <input name="Email" type="email" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors" placeholder="john@example.com" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Issue Category</label>
-                <select className="w-full bg-[#1A1A1A] border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors appearance-none">
+                <select name="Category" className="w-full bg-[#1A1A1A] border border-white/10 rounded-[4px] px-4 py-3 text-white focus:border-primary outline-none transition-colors appearance-none">
                   <option>Bug Report</option>
                   <option>Feature Request</option>
                   <option>Connection Issue</option>
                   <option>Performance Issue</option>
+                  <option>Other</option>
                 </select>
               </div>
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-foreground/50 uppercase tracking-widest">Description</label>
-                <textarea className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-6 text-white focus:border-primary outline-none transition-colors min-h-[150px]" placeholder="Please describe the issue in detail..." />
+                <textarea name="Description" className="w-full bg-white/5 border border-white/10 rounded-[4px] px-4 py-6 text-white focus:border-primary outline-none transition-colors min-h-[150px]" placeholder="Please describe the issue in detail..." />
               </div>
               <button type="submit" className="btn-primary w-full py-4 text-base font-bold">Submit Report</button>
             </form>
