@@ -83,9 +83,9 @@ export default function LandingPage() {
           clearInterval(interval);
           setDownloading(false);
           
-          // Trigger the actual file download
+          // Trigger the actual file download from GitHub Releases
           const link = document.createElement('a');
-          link.href = '/downloads/GemDesk-Setup.exe';
+          link.href = 'https://github.com/OluRemiFour/Gemdesk-ai/releases/latest/download/GemDesk-Setup.exe';
           link.download = 'GemDesk-Setup.exe';
           document.body.appendChild(link);
           link.click();
