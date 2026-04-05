@@ -1,5 +1,6 @@
 "use client";
 
+import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -47,23 +48,29 @@ export default function LandingPage() {
     };
 
     try {
-      const response = await fetch('https://gemdesk-backend.onrender.com/api/report-issue', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_placeholder',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_placeholder',
+        {
+          from_name: data.name,
+          from_email: data.email,
+          category: data.category,
+          message: data.description,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'public_key_placeholder'
+      );
       
-      const result = await response.json();
-      
-      if (response.ok) {
+      if (result.status === 200) {
         setReportState({ loading: false, success: true, error: null });
         (e.target as HTMLFormElement).reset();
       } else {
-        setReportState({ loading: false, success: false, error: result.error || 'Something went wrong' });
+        setReportState({ loading: false, success: false, error: 'Something went wrong with the email service' });
       }
     } catch (err) {
-      setReportState({ loading: false, success: false, error: 'Failed to send report' });
+      console.error('EmailJS Error:', err);
+      setReportState({ loading: false, success: false, error: 'Failed to send report via EmailJS' });
     }
+    
   };
 
   const handleDownload = () => {
@@ -75,12 +82,15 @@ export default function LandingPage() {
         if (prev >= 100) {
           clearInterval(interval);
           setDownloading(false);
-          // In a real app, this would trigger the actual file download
+          
+          // Trigger the actual file download
           const link = document.createElement('a');
-          link.href = '#'; // Placeholder for gemdesk.exe
-          link.download = 'gemdesk.exe';
-          // link.click(); // Don't actually click in the demo
-          alert("GemDesk installer (gemdesk.exe) download would start now. This is a hackathon project demonstration.");
+          link.href = '/downloads/GemDesk-Setup.exe';
+          link.download = 'GemDesk-Setup.exe';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          
           return 100;
         }
         return prev + Math.floor(Math.random() * 15) + 5;
