@@ -211,9 +211,18 @@ export default function LandingPage() {
                   <>Download Desktop App <ArrowRight className="w-4 h-4" /></>
                 )}
               </button>
-              <button className="btn-outline w-full sm:w-auto">
-                View on GitHub
-              </button>
+            <button
+  onClick={() =>
+    window.open(
+      "https://github.com/OluRemiFour/Gemdesk-landing-page",
+      "_blank",
+      "noopener,noreferrer"
+    )
+  }
+  className="btn-outline w-full sm:w-auto"
+>
+  View on GitHub
+</button>
             </div>
           </motion.div>
 
