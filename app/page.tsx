@@ -546,7 +546,7 @@ export default function LandingPage() {
             <span className="font-bold text-white">GemDesk</span>
           </div>
           <p className="text-xs text-foreground/40">
-            Built for developers. No marketing fluff. &copy; 2026 GemDesk
+            Built for everyone. No marketing fluff. &copy; 2026 GemDesk
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-foreground/40 hover:text-white"><Github className="w-5 h-5" /></a>
